@@ -1,0 +1,15 @@
+Optional local wall-depth assets for Crux Studio v0.7
+
+Model: onnx-community/depth-anything-v2-small, model_quantized.onnx
+https://huggingface.co/onnx-community/depth-anything-v2-small
+SHA256: fcf51f1b230362b28690bb9d1809bf0431f29cad20534e3f589bd7285547f20d
+Base model: https://huggingface.co/depth-anything/Depth-Anything-V2-Small
+License: Apache-2.0 (Small model). Original model authors: Depth Anything V2 team.
+Split into four byte-consecutive parts; no weight modifications.
+
+Runtime: ONNX Runtime Web 1.31.1, Microsoft Corporation, MIT License.
+https://registry.npmjs.org/onnxruntime-web/-/onnxruntime-web-1.31.1.tgz
+Only the WASM inference entry, factory and required binary are distributed.
+See ONNX-RUNTIME-LICENSE.txt and ONNX-RUNTIME-NOTICES.txt.
+
+Only explicit enhancement requests load these assets. Photos are never sent.

@@ -1,0 +1,43 @@
+{
+  "version": "wall-depth-v1-ort-1.31.1",
+  "modelSha256": "fcf51f1b230362b28690bb9d1809bf0431f29cad20534e3f589bd7285547f20d",
+  "modelBytes": 27258801,
+  "runtime": {
+    "file": "ort.wasm.min.mjs",
+    "bytes": 53725,
+    "sha256": "c21d9c326d453a4a61398270c804d5979e118540597cb0c07f7b3d64e6098234"
+  },
+  "factory": {
+    "file": "ort-wasm-simd-threaded.mjs",
+    "bytes": 24738,
+    "sha256": "30ed0b5cd1182ede931fea448afb567d4dc705ec957af09f108a2be5f770dac3"
+  },
+  "wasm": {
+    "file": "ort-wasm-simd-threaded.wasm",
+    "bytes": 14848852,
+    "sha256": "4b884c203b0fa48d057be3332c65513ff85aa3c5bddd6946acc0fab7ecda001d"
+  },
+  "parts": [
+    {
+      "file": "model-1.bin",
+      "bytes": 8388608,
+      "sha256": "9cb5330ff5cc8b088d82bc71f446245780b62f61944f628d8815077fe8a346b8"
+    },
+    {
+      "file": "model-2.bin",
+      "bytes": 8388608,
+      "sha256": "ee3774efc112887b345d1103f81448d3e848381e66966c5280565de6c607485f"
+    },
+    {
+      "file": "model-3.bin",
+      "bytes": 8388608,
+      "sha256": "f70c13ad118ad0515d68a687d8b03f45f841de62050934422cf322f2d51ea16f"
+    },
+    {
+      "file": "model-4.bin",
+      "bytes": 2092977,
+      "sha256": "dca854cb47cf96f483bf55b00a94daf8827f2e5ac7334fa1637498433d2b4ac6"
+    }
+  ],
+  "downloadBytes": 42186116
+}
