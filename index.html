@@ -1,25 +1,25 @@
 <!doctype html>
 <html lang="zh-CN" data-page="library" data-layout="desktop"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#272a27">
-<meta name="application-name" content="岩序"><meta name="application-version" content="1.0.2">
+<meta name="application-name" content="岩序"><meta name="application-version" content="1.0.3">
 <meta name="description" content="在照片上画出下一条攀岩线路，用真实三维岩点和可拖动的人体推敲构想。"><title>岩序 CRUX · 线路库</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%23241E11'/%3E%3Cpath d='M7 29L18 9L25 22L30 16L35 29Z' fill='%23D9D2BF'/%3E%3C/svg%3E">
 
 
-<link rel="stylesheet" href="site.css?v=1.0.2">
+<link rel="stylesheet" href="site.css?v=1.0.3">
 </head><body>
 <header class="topbar">
   <button id="homeBtn" class="brand" aria-label="岩序首页"><span class="brandmark" aria-hidden="true">◭</span><strong>岩序</strong></button>
   <button id="backLibrary" class="back-library editor-only"><span aria-hidden="true">←</span> 返回线路库</button>
   <div class="header-actions"><a class="home-nav" href="#routes">线路库</a><span id="saveStatus" class="save-status" role="status"></span>
     <button id="menuToggle" class="quiet" aria-expanded="false" aria-controls="projectMenu" aria-label="更多操作">⋯</button>
-    <div id="projectMenu" class="project-menu" hidden><button id="saveFile" class="editor-only">下载备份</button><button id="openFile">导入备份</button><button id="demoBtn">岩点示例</button><button id="helpBtn">使用说明</button></div>
+    <div id="projectMenu" class="project-menu" hidden><button id="saveFile" class="editor-only">下载备份</button><button id="openFile">导入备份</button><button id="demoBtn">岩点示例</button><button id="replayTutorial" class="editor-only">新手教程</button><button id="helpBtn">使用说明</button></div>
   </div>
 </header>
 <main id="libraryPage" class="library-page">
   <section class="landing-hero" aria-labelledby="landingTitle">
     <div class="hero-copy"><h1 id="landingTitle"><span>攀岩小白也可以上手的</span><br><em>定线模拟器</em></h1>
-      <div class="hero-actions"><button id="heroNew" class="button primary">新建线路 <span aria-hidden="true">↗</span></button><a href="#projects">浏览项目 <span aria-hidden="true">↓</span></a></div>
+      <div class="hero-actions"><button id="heroNew" class="button primary">新建线路 <span aria-hidden="true">↗</span></button><a href="#projects">浏览项目 <span aria-hidden="true">↓</span></a><a href="?tutorial=1">新手教程</a></div>
     </div>
     <figure class="hold-study" aria-label="可转动的三维岩点">
       <div class="specimen-stage"><canvas id="specimen" tabindex="0" aria-label="旋转岩点，使用左右和上下方向键，Home 键复位">可在工作台打开岩点示例。</canvas><canvas id="chalkField" aria-hidden="true"></canvas>
@@ -51,6 +51,7 @@
     </div>
   </section>
 </main>
+<div id="tutorialSpotlight" aria-hidden="true" hidden></div><aside id="tutorial" class="tutorial" aria-label="新手教程" aria-live="polite" hidden><strong id="tutorialTitle"></strong><p id="tutorialHint"></p><div><button id="tutorialSkip" class="quiet">跳过教程</button><button id="tutorialAction" class="button primary"></button></div></aside>
 <main id="editorPage" hidden><div class="projectbar"><input id="projectName" aria-label="线路名称" maxlength="100"><div class="photo-actions"><button id="cropPhoto" class="button subtle">裁剪</button><button id="uploadBtn" class="button primary">换照片</button></div></div>
 <div class="workbench">
 <section class="stage">
@@ -102,4 +103,4 @@
 <dialog id="startAssignDialog" class="workflow-dialog" aria-labelledby="assignTitle"><div class="dialog-heading"><h2 id="assignTitle">起步手脚</h2><button id="cancelAssign" class="quiet">取消</button></div><p>每条胶带对应一只手或脚。同一个点可以分给多个肢体。</p><div class="assign-grid"><label>左手<select data-start-tip="lw"></select></label><label>右手<select data-start-tip="rw"></select></label><label>左脚<select data-start-tip="lf"></select></label><label>右脚<select data-start-tip="rf"></select></label></div><p id="assignStatus" class="mark-status" role="status"></p><button id="saveAssign" class="button primary wide">保存分配</button></dialog>
 <dialog id="scaleAskDialog" class="workflow-dialog" aria-labelledby="scaleAskTitle"><div class="dialog-heading"><h2 id="scaleAskTitle">这面墙的比例量过吗？</h2><button id="dismissScaleAsk" aria-label="关闭标定提示" class="quiet">×</button></div><p id="scaleAskText"></p><div class="choice-list"><button id="measureBeforeTrial" class="button primary">在照片上标定两点</button><button id="skipMeasure" class="button subtle">用估算比例</button></div></dialog>
 <dialog id="photoTools" class="workflow-dialog photo-tools" aria-labelledby="photoToolTitle"><div class="dialog-heading"><h2 id="photoToolTitle">照片</h2><button id="photoToolCancel" class="quiet">取消</button></div><p id="photoToolHint"></p><canvas id="photoToolCanvas" aria-label="照片对齐或两点标定画布"></canvas><div id="photoAlignControls" class="photo-tool-row"><label for="photoScale">缩放 <output id="photoScaleOut">100%</output></label><input type="range" id="photoScale" min="20" max="400" step="1" value="100"><button id="photoAlignReset" class="quiet">居中</button></div><div id="photoMeasureControls" class="photo-tool-row"><label for="realMetres">实测距离 / 米</label><input type="number" inputmode="decimal" id="realMetres" min=".01" max="40" step="any" placeholder="例如 1.20"><button id="photoUndoPoint" class="quiet">撤一点</button></div><p id="photoToolStatus" role="status"></p><div class="choice-list"><button id="photoToolApply" class="button primary"></button><button id="photoAsNew" class="button subtle">用照片另建线路</button></div></dialog>
-<script type="module" src="app.js?v=1.0.2"></script></body></html>
+<script type="module" src="app.js?v=1.0.3"></script></body></html>
