@@ -1,1 +1,1 @@
-import{J as s}from"./chunk-HK5EHR4Z.js";import"./chunk-2FLL22CU.js";self.onmessage=({data:{project:e,order:o}})=>{try{let a=s(e,o,(t,l)=>self.postMessage({index:t,total:l}));self.postMessage({plan:a})}catch{self.postMessage({error:"未能生成动作。可检查起步或减少连续目标后重试。"})}};
+import{J as s}from"./chunk-2Y46VLR3.js";import"./chunk-PLWDKYS6.js";self.onmessage=({data:{project:e,order:o}})=>{try{let a=s(e,o,(t,l)=>self.postMessage({index:t,total:l}));self.postMessage({plan:a})}catch{self.postMessage({error:"未能生成动作。可检查起步或减少连续目标后重试。"})}};
