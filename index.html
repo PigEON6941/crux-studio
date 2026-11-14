@@ -1,12 +1,12 @@
 <!doctype html>
 <html lang="zh-CN" data-page="library" data-layout="desktop"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#272a27">
-<meta name="application-name" content="岩序"><meta name="application-version" content="1.1.0">
+<meta name="application-name" content="岩序"><meta name="application-version" content="1.1.1">
 <meta name="description" content="在照片上画出下一条攀岩线路，用真实三维岩点和可拖动的人体推敲构想。"><title>岩序 CRUX · 线路库</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%23241E11'/%3E%3Cpath d='M7 29L18 9L25 22L30 16L35 29Z' fill='%23D9D2BF'/%3E%3C/svg%3E">
 
 
-<link rel="stylesheet" href="site.css?v=1.1.0">
+<link rel="stylesheet" href="site.css?v=1.1.1">
 </head><body>
 <header class="topbar">
   <button id="homeBtn" class="brand" aria-label="岩序首页"><span class="brandmark" aria-hidden="true">◭</span><strong>岩序</strong></button>
@@ -46,13 +46,14 @@
     <p id="libraryStatus" class="library-status" role="status">正在读取线路…</p><div id="projectGrid" class="project-grid"></div>
     <button id="recentlyDeleted" class="text-button" hidden>最近删除</button>
     <h3 class="example-heading">示例线路</h3><div class="example-list">
+      <button id="warmupExample"><span class="motion-mini" aria-hidden="true"><svg viewBox="0 0 96 64"><path d="M8 54 24 45 34 47 42 34 57 37 66 19 78 18 88 8"/><g><circle cx="8" cy="54" r="3"/><circle cx="24" cy="45" r="3"/><circle cx="34" cy="47" r="3"/><circle cx="42" cy="34" r="3"/><circle cx="57" cy="37" r="3"/><circle cx="66" cy="19" r="3"/><circle cx="78" cy="18" r="3"/><circle cx="88" cy="8" r="3"/></g></svg></span><span><strong>暖身线 · 绿线</strong><small>静态 · 16 个岩点</small></span><span aria-hidden="true">↗</span></button>
+      <button id="motionExample"><span class="motion-mini orange" aria-hidden="true"><svg viewBox="0 0 96 64"><path d="M12 51 33 45 Q45 8 59 27 L76 13"/><g><circle cx="12" cy="51" r="3"/><circle cx="33" cy="45" r="3"/><circle cx="59" cy="27" r="3"/><circle cx="76" cy="13" r="3"/></g></svg></span><span><strong>飞跃后上脚 · 橙线</strong><small>动态接静态 · 13 个岩点</small></span><span aria-hidden="true">↗</span></button>
       <button id="libraryDemo"><img src="examples/route-v09.jpg" alt="" loading="lazy" width="96" height="64"><span><strong>岩点造型</strong><small>抓口、体积块、打钉点</small></span><span aria-hidden="true">↗</span></button>
-      <button id="motionExample"><span class="motion-mini" aria-hidden="true"><svg viewBox="0 0 96 64"><path d="M8 54 24 45 34 47 42 34 57 37 66 19 78 18 88 8"/><g><circle cx="8" cy="54" r="3"/><circle cx="24" cy="45" r="3"/><circle cx="34" cy="47" r="3"/><circle cx="42" cy="34" r="3"/><circle cx="57" cy="37" r="3"/><circle cx="66" cy="19" r="3"/><circle cx="78" cy="18" r="3"/><circle cx="88" cy="8" r="3"/></g></svg></span><span><strong>走法预览</strong><small>暖身线 · 16 个岩点</small></span><span aria-hidden="true">↗</span></button>
     </div>
   </section>
 </main>
 <div id="tutorialSpotlight" aria-hidden="true" hidden></div><aside id="tutorial" class="tutorial" aria-label="新手教程" aria-live="polite" hidden><strong id="tutorialTitle"></strong><p id="tutorialHint"></p><div><button id="tutorialSkip" class="quiet">跳过教程</button><button id="tutorialAction" class="button primary"></button></div></aside>
-<main id="editorPage" hidden><div class="projectbar"><div class="route-title"><input id="projectName" aria-label="线路名称" maxlength="100"><output id="routeGrade" class="route-grade" aria-label="拟定线路等级"></output></div><div class="photo-actions"><button id="cropPhoto" class="button subtle">裁剪</button><button id="uploadBtn" class="button primary">换照片</button></div></div>
+<main id="editorPage" hidden><div class="projectbar"><div class="route-title"><input id="projectName" aria-label="线路名称" maxlength="100"><output id="routeGrade" class="route-grade" aria-label="拟定线路等级">正在估级…</output></div><div class="photo-actions"><button id="cropPhoto" class="button subtle">裁剪</button><button id="uploadBtn" class="button primary">换照片</button></div></div>
 <div class="workbench">
 <section class="stage">
   <div class="stagebar"><div class="segmented" aria-label="视图"><button data-view="sketch" class="active">草图</button><button data-view="three">3D</button><button data-view="split">对照</button></div><button id="buildSketch" class="button generate" disabled><span id="buildLabel">生成岩点</span> <span id="pendingCount"></span> ↗</button></div>
@@ -130,4 +131,4 @@
   <footer class="order-footer"><button id="orderAuto" class="text-button" hidden>自动排点</button><button id="orderSave" class="button primary">保存走法</button></footer>
 </dialog>
 <dialog id="photoTools" class="workflow-dialog photo-tools" aria-labelledby="photoToolTitle"><div class="dialog-heading"><h2 id="photoToolTitle">照片</h2><button id="photoToolCancel" class="quiet">取消</button></div><p id="photoToolHint"></p><canvas id="photoToolCanvas" aria-label="照片对齐或两点标定画布"></canvas><div id="photoAlignControls" class="photo-tool-row"><label for="photoScale">缩放 <output id="photoScaleOut">100%</output></label><input type="range" id="photoScale" min="20" max="400" step="1" value="100"><button id="photoAlignReset" class="quiet">居中</button></div><div id="photoMeasureControls" class="photo-tool-row"><label for="realMetres">实测距离 / 米</label><input type="number" inputmode="decimal" id="realMetres" min=".01" max="40" step="any" placeholder="例如 1.20"><button id="photoUndoPoint" class="quiet">撤一点</button></div><p id="photoToolStatus" role="status"></p><div class="choice-list"><button id="photoToolApply" class="button primary"></button><button id="photoAsNew" class="button subtle">用照片另建线路</button></div></dialog>
-<script type="module" src="app.js?v=1.1.0"></script></body></html>
+<script type="module" src="app.js?v=1.1.1"></script></body></html>
