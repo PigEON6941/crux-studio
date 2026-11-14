@@ -1,19 +1,19 @@
 <!doctype html>
 <html lang="zh-CN" data-page="library" data-layout="desktop"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#272a27">
-<meta name="application-name" content="岩序"><meta name="application-version" content="1.1.2">
+<meta name="application-name" content="岩序"><meta name="application-version" content="1.2.0">
 <meta name="description" content="在照片上画出下一条攀岩线路，用真实三维岩点和可拖动的人体推敲构想。"><title>岩序 CRUX · 线路库</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%23241E11'/%3E%3Cpath d='M7 29L18 9L25 22L30 16L35 29Z' fill='%23D9D2BF'/%3E%3C/svg%3E">
 
 
-<link rel="stylesheet" href="site.css?v=1.1.2">
+<link rel="stylesheet" href="site.css?v=1.2.0">
 </head><body>
 <header class="topbar">
   <button id="homeBtn" class="brand" aria-label="岩序首页"><span class="brandmark" aria-hidden="true">◭</span><strong>岩序</strong></button>
   <button id="backLibrary" class="back-library editor-only"><span aria-hidden="true">←</span> 返回线路库</button>
   <div class="header-actions"><a class="home-nav" href="#routes">线路库</a><span id="saveStatus" class="save-status" role="status"></span>
     <button id="menuToggle" class="quiet" aria-expanded="false" aria-controls="projectMenu" aria-label="更多操作">⋯</button>
-    <div id="projectMenu" class="project-menu" hidden><button id="saveFile" class="editor-only">下载备份</button><button id="openFile">导入备份</button><button id="demoBtn">岩点示例</button><button id="replayTutorial" class="editor-only">新手教程</button><button id="helpBtn">使用说明</button></div>
+    <div id="projectMenu" class="project-menu" hidden><button id="saveFile" class="editor-only">下载备份</button><button id="openFile" class="editor-only">导入备份</button><button id="demoBtn">岩点示例</button><button id="replayTutorial" class="editor-only">新手教程</button><button id="helpBtn">使用说明</button></div>
   </div>
 </header>
 <main id="libraryPage" class="library-page">
@@ -48,6 +48,7 @@
     <h3 class="example-heading">示例线路</h3><div class="example-list">
       <button id="warmupExample"><span class="motion-mini" aria-hidden="true"><svg viewBox="0 0 96 64"><path d="M8 54 24 45 34 47 42 34 57 37 66 19 78 18 88 8"/><g><circle cx="8" cy="54" r="3"/><circle cx="24" cy="45" r="3"/><circle cx="34" cy="47" r="3"/><circle cx="42" cy="34" r="3"/><circle cx="57" cy="37" r="3"/><circle cx="66" cy="19" r="3"/><circle cx="78" cy="18" r="3"/><circle cx="88" cy="8" r="3"/></g></svg></span><span><strong>暖身线 · 绿线</strong><small>静态 · 16 个岩点</small></span><span aria-hidden="true">↗</span></button>
       <button id="motionExample"><span class="motion-mini orange" aria-hidden="true"><svg viewBox="0 0 96 64"><path d="M12 51 33 45 Q45 8 59 27 L76 13"/><g><circle cx="12" cy="51" r="3"/><circle cx="33" cy="45" r="3"/><circle cx="59" cy="27" r="3"/><circle cx="76" cy="13" r="3"/></g></svg></span><span><strong>飞跃后上脚 · 橙线</strong><small>动态接静态 · 13 个岩点</small></span><span aria-hidden="true">↗</span></button>
+      <button id="wallLinkExample"><span class="motion-mini orange" aria-hidden="true"><svg viewBox="0 0 96 64"><path d="M12 53 Q30 11 46 31 Q67 0 85 11"/><g><circle cx="12" cy="53" r="3"/><circle cx="46" cy="31" r="3"/><circle cx="85" cy="11" r="3"/></g></svg></span><span><strong>蹭墙再起跳</strong><small>连续飞跃 · 5 个岩点</small></span><span aria-hidden="true">↗</span></button>
       <button id="libraryDemo"><img src="examples/route-v09.jpg" alt="" loading="lazy" width="96" height="64"><span><strong>岩点造型</strong><small>抓口、体积块、打钉点</small></span><span aria-hidden="true">↗</span></button>
     </div>
   </section>
@@ -56,14 +57,14 @@
 <main id="editorPage" hidden><div class="projectbar"><div class="route-title"><input id="projectName" aria-label="线路名称" maxlength="100"><output id="routeGrade" class="route-grade" aria-label="拟定线路等级">正在估级…</output></div><div class="photo-actions"><button id="cropPhoto" class="button subtle">裁剪</button><button id="uploadBtn" class="button primary">换照片</button></div></div>
 <div class="workbench">
 <section class="stage">
-  <div class="stagebar"><div class="segmented" aria-label="视图"><button data-view="sketch" class="active">草图</button><button data-view="three">3D</button><button data-view="split">对照</button></div><button id="buildSketch" class="button generate" disabled><span id="buildLabel">生成岩点</span> <span id="pendingCount"></span> ↗</button></div>
+  <div class="stagebar"><div class="segmented" role="group" aria-label="视图"><button data-view="sketch" aria-pressed="true" class="active">草图</button><button data-view="three" aria-pressed="false">3D</button><button data-view="split" aria-pressed="false">对照</button></div><button id="buildSketch" class="button generate" disabled><span id="buildLabel">生成岩点</span> <span id="pendingCount"></span> ↗</button></div>
   <div id="analysisBar" class="analysis-bar" hidden><div><span id="analysisMessage" role="status" aria-live="polite"></span><progress id="analysisProgress" aria-label="识别进度"></progress></div><button id="analysisFallback" class="button subtle" hidden>轻量识别</button><button id="analysisCancel" class="quiet">取消</button></div>
   <div class="canvas-grid" data-mode="split">
     <section class="viewport sketch-view"><div class="pane-heading"><span>照片</span><div id="drawModeBar" class="draw-mode-bar" role="group" aria-label="下一笔怎样成形"><button type="button" id="drawAsLine" aria-pressed="true">⌁ 抓边</button><button type="button" id="drawAsPatch" aria-pressed="false">▰ 整块</button></div><span id="photoLabel" hidden></span><button id="fitPhoto" class="text-button">全图</button></div><div id="sketchWrap" class="sketch-wrap"><canvas id="sketch" aria-label="照片绘画画布，单指画线，双指缩放和平移" tabindex="0"></canvas><div id="drawHint" hidden></div><div id="wallDrawBar" class="wall-draw-bar" hidden><div><strong id="wallDrawLabel">划分墙面</strong><span id="wallPointCount">点选至少 3 个角点</span></div><div class="draw-actions"><button id="undoPoint" class="quiet" aria-label="撤回一个角点">撤一点</button><button id="cancelWallDraw" class="quiet">取消</button><button id="finishWallDraw" class="button primary" disabled>完成分区</button></div></div></div></section>
     <section class="viewport three-view"><div class="pane-heading"><span>3D</span><span id="holdCount" hidden></span></div><div id="threeWrap" class="three-wrap"><div id="threeError" hidden></div><div id="detailBar" class="detail-bar" hidden><button id="previousHold" aria-label="上一个岩点">‹</button><span id="detailTitle"></span><button id="nextHold" aria-label="下一个岩点">›</button><select id="detailHand" aria-label="查看岩点抓法"><option value="">只看岩点</option><option value="rw">右手抓法</option><option value="lw">左手抓法</option></select><button id="exitDetail" class="detail-exit">返回全墙</button></div><span id="detailHint" class="detail-hint" hidden>拖动旋转 · 双指或滚轮缩放</span><span id="poseHint" hidden></span><div id="placementBar" class="action-banner" hidden><strong>选大岩点上的安装位置</strong><button id="cancelPlacement" type="button">取消</button></div><div id="reachReadout" class="reach-readout" role="status" hidden></div><div class="view-cube" hidden><svg viewBox="0 0 80 80" tabindex="0" role="group" aria-label="视图立方体。点选面切换视角，拖动旋转。方向键选择左右上下，Home 正面，End 背面。"><title>点面切换视角 · 拖动旋转</title></svg></div><div class="camera-tools"><button id="gripView" hidden>看开口</button><button id="resetView" title="将整面墙放入画面">适合窗口 ⤢</button></div></div><div id="motionBar" class="motion-player" hidden>
-  <div class="player-caption"><strong id="playCaption" role="status"></strong><button id="editPlayingOrder">选岩点</button><button id="exitMotion" aria-label="退出动作播放">退出</button></div>
+  <div class="player-caption"><strong id="playCaption" role="status"></strong><button id="editPlayingOrder">调整步骤</button><button id="exitMotion" aria-label="退出走法预览">退出</button></div>
   <span id="playPhase"></span><div id="dynoDemand" hidden></div>
-  <div class="play-buttons"><button id="playPause" class="play-main">暂停</button><input id="playTime" type="range" min="0" max="1000" step="1" value="0" aria-label="动作播放进度"><button id="slowMotion" aria-pressed="false" aria-label="半速播放" hidden>0.5×</button><button id="watchGrip" aria-pressed="false">近看</button></div>
+  <div class="play-buttons"><button id="playPause" class="play-main">暂停</button><input id="playTime" type="range" min="0" max="1000" step="1" value="0" aria-label="走法预览进度"><button id="slowMotion" aria-pressed="false" aria-label="当前正常速度，点击切换半速">速度 1×</button><button id="watchGrip" aria-pressed="false">近看</button></div>
 </div></section>
   </div>
   <div class="route-strip"><span class="route-label">岩点 <b id="routeNumber">0</b></span><div id="holdList" class="hold-list"></div><button id="inspectSelection" class="button subtle" disabled>放大岩点 ⤢</button><button id="continueDrawing" class="button primary" type="button">继续画点</button></div>
@@ -99,7 +100,7 @@
   <section class="auto-movement" aria-labelledby="autoTitle">
     <h2 id="autoTitle">走法预览</h2>
     <p id="motionSummary"></p>
-    <div class="auto-actions"><button id="runMotion" class="button primary">播放走法</button><button id="pickMotion" class="button subtle">选岩点</button></div>
+    <div class="auto-actions"><button id="runMotion" class="button primary">播放走法</button><button id="pickMotion" class="button subtle">编排走法</button></div>
     <p id="motionNote" class="mark-status" role="status"></p>
   </section>
   <section class="body-fit" aria-labelledby="bodyFitTitle">
@@ -110,13 +111,13 @@
 </section>
 </aside></div>
 </main><input id="photoInput" type="file" accept="image/*" hidden><input id="projectInput" type="file" accept=".json,application/json" hidden><div id="toast" class="toast" role="status" hidden></div>
-<dialog id="helpDialog"><div class="dialog-heading"><h2>画第一条线路</h2><button id="closeHelp" class="quiet" aria-label="关闭说明">×</button></div><ol class="welcome-steps"><li><strong>上传照片</strong><span>选「直接画岩点」就能动笔。有折角时再调整；给已有线路加照片会保留标注。</span></li><li><strong>画出岩点</strong><span>手绘或拖直线画抓边，圈色块画整块。点「生成岩点」后可换造型。</span></li><li><strong>转动查看</strong><span>选编号 →「放大岩点」。拖动旋转，双指缩放；在大岩点表面还可以加打钉点。</span></li></ol><p>项目自动保存在本机。在「动作」中播放走法，或直接拖动人体调姿。</p><button id="helpDemo" class="button primary wide">先用示例试一遍</button><button id="startBtn" class="button subtle wide">开始自己的线路</button></dialog>
-<dialog id="cropDialog" class="crop-dialog"><div class="dialog-heading"><h2>裁剪照片</h2><button data-crop="reset" class="quiet">全图</button></div><canvas aria-label="拖动四角裁剪照片，拖框内移动裁剪范围"></canvas><div class="dialog-actions"><span role="status"></span><button data-crop="cancel" class="button subtle">取消</button><button data-crop="apply" class="button primary">确认裁剪</button></div></dialog>
+<dialog id="helpDialog" aria-labelledby="helpTitle"><div class="dialog-heading"><h2 id="helpTitle">画第一条线路</h2><button id="closeHelp" class="quiet" aria-label="关闭说明">×</button></div><ol class="welcome-steps"><li><strong>上传照片</strong><span>选「直接画岩点」就能动笔。有折角时再调整；给已有线路加照片会保留标注。</span></li><li><strong>画出岩点</strong><span>手绘或拖直线画抓边，圈色块画整块。点「生成岩点」后可换造型。</span></li><li><strong>转动查看</strong><span>选编号 →「放大岩点」。拖动旋转，双指缩放；在大岩点表面还可以加打钉点。</span></li></ol><p>项目自动保存在本机。在「动作」中播放走法，或直接拖动人体调姿。</p><button id="helpDemo" class="button primary wide">先用示例试一遍</button><button id="startBtn" class="button subtle wide">新建线路</button></dialog>
+<dialog id="cropDialog" class="crop-dialog" aria-labelledby="cropTitle"><div class="dialog-heading"><h2 id="cropTitle">裁剪照片</h2><button data-crop="reset" class="quiet">恢复全图</button></div><canvas aria-label="拖动四角裁剪照片，拖框内移动裁剪范围"></canvas><div class="dialog-actions"><span role="status"></span><button data-crop="cancel" class="button subtle">取消</button><button data-crop="apply" class="button primary">确认裁剪</button></div></dialog>
 <dialog id="photoStartDialog" class="workflow-dialog" aria-labelledby="photoStartTitle"><div class="dialog-heading"><h2 id="photoStartTitle">照片已放好</h2></div><div class="choice-list"><button id="startFlat" class="button primary">直接画岩点</button><button id="startFolds" class="button subtle">调墙面折角</button></div><p class="microcopy">也可以先画，再到「墙体」里加折角。</p></dialog>
 <dialog id="libraryActionDialog" class="workflow-dialog" aria-labelledby="libraryActionTitle"><div class="dialog-heading"><h2 id="libraryActionTitle"></h2></div><p id="libraryActionHint"></p><label id="routeRenameField" class="field-label">线路名称<input id="routeRename" maxlength="100" autocomplete="off"></label><p id="libraryActionStatus" role="status"></p><div class="dialog-actions"><button id="libraryActionCancel" class="button subtle">取消</button><button id="libraryActionGo" class="button primary">保存名称</button></div></dialog>
 <dialog id="trashDialog" class="workflow-dialog" aria-labelledby="trashTitle"><div class="dialog-heading"><h2 id="trashTitle">最近删除</h2><button id="trashClose" class="quiet">关闭</button></div><div id="trashList"></div><p id="trashStatus" role="status"></p></dialog>
 <dialog id="motionOrderDialog" class="motion-order" aria-labelledby="orderTitle" aria-describedby="orderHint">
-  <div class="dialog-heading"><h2 id="orderTitle">选岩点</h2><button id="orderCancel" class="quiet">取消</button></div>
+  <div class="dialog-heading"><h2 id="orderTitle">编排走法</h2><button id="orderCancel" class="quiet">取消</button></div>
   <div class="order-workspace">
     <div class="order-map-heading"><p id="orderHint">按顺序点岩点</p></div>
     <div id="orderMap" class="order-map" aria-label="在墙上点选岩点"></div>
@@ -124,6 +125,7 @@
     <div class="order-review"><label for="orderSequence">走法</label><select id="orderSequence" aria-label="选择要修改的步骤"></select></div>
     <div id="orderStepTools" class="order-edit" hidden>
       <div class="step-modes" role="group" aria-label="当前步骤的动作"><button data-step-mode="steady">静态</button><button data-step-mode="dynamic">动态</button></div>
+      <div class="step-settings"><label>脚法<select id="orderFootwork"><option value="">自动</option><option value="smear">蹭墙</option><option value="heel-hook">挂脚跟</option><option value="toe-hook">勾脚尖</option></select></label><label id="orderLaunchField" hidden>起跳<select id="orderLaunch"><option value="">常规</option><option value="deep">深蹲</option><option value="quick">快速</option></select></label></div>
       <button id="orderRemove" class="quiet" aria-label="移除当前步骤">删这步</button>
       <button id="orderDone" class="quiet">继续加点</button>
     </div>
@@ -131,4 +133,4 @@
   <footer class="order-footer"><button id="orderAuto" class="text-button" hidden>自动排点</button><button id="orderSave" class="button primary">保存走法</button></footer>
 </dialog>
 <dialog id="photoTools" class="workflow-dialog photo-tools" aria-labelledby="photoToolTitle"><div class="dialog-heading"><h2 id="photoToolTitle">照片</h2><button id="photoToolCancel" class="quiet">取消</button></div><p id="photoToolHint"></p><canvas id="photoToolCanvas" aria-label="照片对齐或两点标定画布"></canvas><div id="photoAlignControls" class="photo-tool-row"><label for="photoScale">缩放 <output id="photoScaleOut">100%</output></label><input type="range" id="photoScale" min="20" max="400" step="1" value="100"><button id="photoAlignReset" class="quiet">居中</button></div><div id="photoMeasureControls" class="photo-tool-row"><label for="realMetres">实测距离 / 米</label><input type="number" inputmode="decimal" id="realMetres" min=".01" max="40" step="any" placeholder="例如 1.20"><button id="photoUndoPoint" class="quiet">撤一点</button></div><p id="photoToolStatus" role="status"></p><div class="choice-list"><button id="photoToolApply" class="button primary"></button><button id="photoAsNew" class="button subtle">用照片另建线路</button></div></dialog>
-<script type="module" src="app.js?v=1.1.2"></script></body></html>
+<script type="module" src="app.js?v=1.2.0"></script></body></html>
