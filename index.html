@@ -1,12 +1,12 @@
 <!doctype html>
 <html lang="zh-CN" data-page="library" data-layout="desktop"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#272a27">
-<meta name="application-name" content="岩序"><meta name="application-version" content="1.1.1">
+<meta name="application-name" content="岩序"><meta name="application-version" content="1.1.2">
 <meta name="description" content="在照片上画出下一条攀岩线路，用真实三维岩点和可拖动的人体推敲构想。"><title>岩序 CRUX · 线路库</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%23241E11'/%3E%3Cpath d='M7 29L18 9L25 22L30 16L35 29Z' fill='%23D9D2BF'/%3E%3C/svg%3E">
 
 
-<link rel="stylesheet" href="site.css?v=1.1.1">
+<link rel="stylesheet" href="site.css?v=1.1.2">
 </head><body>
 <header class="topbar">
   <button id="homeBtn" class="brand" aria-label="岩序首页"><span class="brandmark" aria-hidden="true">◭</span><strong>岩序</strong></button>
@@ -131,4 +131,4 @@
   <footer class="order-footer"><button id="orderAuto" class="text-button" hidden>自动排点</button><button id="orderSave" class="button primary">保存走法</button></footer>
 </dialog>
 <dialog id="photoTools" class="workflow-dialog photo-tools" aria-labelledby="photoToolTitle"><div class="dialog-heading"><h2 id="photoToolTitle">照片</h2><button id="photoToolCancel" class="quiet">取消</button></div><p id="photoToolHint"></p><canvas id="photoToolCanvas" aria-label="照片对齐或两点标定画布"></canvas><div id="photoAlignControls" class="photo-tool-row"><label for="photoScale">缩放 <output id="photoScaleOut">100%</output></label><input type="range" id="photoScale" min="20" max="400" step="1" value="100"><button id="photoAlignReset" class="quiet">居中</button></div><div id="photoMeasureControls" class="photo-tool-row"><label for="realMetres">实测距离 / 米</label><input type="number" inputmode="decimal" id="realMetres" min=".01" max="40" step="any" placeholder="例如 1.20"><button id="photoUndoPoint" class="quiet">撤一点</button></div><p id="photoToolStatus" role="status"></p><div class="choice-list"><button id="photoToolApply" class="button primary"></button><button id="photoAsNew" class="button subtle">用照片另建线路</button></div></dialog>
-<script type="module" src="app.js?v=1.1.1"></script></body></html>
+<script type="module" src="app.js?v=1.1.2"></script></body></html>
