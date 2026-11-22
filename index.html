@@ -1,12 +1,12 @@
 <!doctype html>
 <html lang="zh-CN" data-page="library" data-layout="desktop"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#272a27">
-<meta name="application-name" content="岩序"><meta name="application-version" content="1.3.0-rc.2">
+<meta name="application-name" content="岩序"><meta name="application-version" content="1.3.0-rc.3">
 <meta name="description" content="在照片上画出下一条攀岩线路，用真实三维岩点和可拖动的人体推敲构想。"><title>岩序 CRUX · 线路库</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2040%2040'%3E%3Crect%20width%3D'40'%20height%3D'40'%20rx%3D'6'%20fill%3D'%23252B26'%2F%3E%3Cpath%20d%3D'M20%204%2037%2035H3Z'%20fill%3D'%23C1D4B0'%2F%3E%3Cpath%20d%3D'M20%2010%2032%2032H20Z'%20fill%3D'%23252B26'%2F%3E%3C%2Fsvg%3E">
 
 
-<link rel="stylesheet" href="site.css?v=1.3.0-rc.2">
+<link rel="stylesheet" href="site.css?v=1.3.0-rc.3">
 </head><body>
 <header class="topbar">
   <button id="homeBtn" class="brand" aria-label="岩序首页"><span class="brandmark" aria-hidden="true">◭</span><strong>岩序</strong></button>
@@ -127,12 +127,13 @@
     <div class="order-review"><label for="orderSequence">走法</label><select id="orderSequence" aria-label="选择要修改的步骤"></select></div>
     <div id="orderStepTools" class="order-edit" hidden>
       <div class="step-modes" role="group" aria-label="当前步骤的动作"><button data-step-mode="steady">静态</button><button data-step-mode="dynamic">动态</button></div>
+      <fieldset class="step-feet"><legend id="orderFeetLabel">发力前脚点</legend><div class="step-settings"><label>左脚<select id="orderLeftFoot" aria-label="左脚岩点"></select></label><label>右脚<select id="orderRightFoot" aria-label="右脚岩点"></select></label></div></fieldset>
       <div class="step-settings"><label>脚法<select id="orderFootwork"><option value="">自动</option><option value="smear">蹭墙</option><option value="heel-hook">挂脚跟</option><option value="toe-hook">勾脚尖</option></select></label><label id="orderLaunchField" hidden>起跳<select id="orderLaunch"><option value="">常规</option><option value="deep">深蹲</option><option value="quick">快速</option></select></label></div>
       <button id="orderRemove" class="quiet" aria-label="移除当前步骤">删这步</button>
       <button id="orderDone" class="quiet">继续加点</button>
     </div>
   </div>
-  <footer class="order-footer"><button id="orderAuto" class="text-button" hidden>自动排点</button><button id="orderSave" class="button primary">保存走法</button></footer>
+  <footer class="order-footer"><button id="orderUndo" class="quiet" disabled>撤回</button><button id="orderAuto" class="text-button" hidden>自动排点</button><button id="orderSave" class="button primary">保存走法</button></footer>
 </dialog>
 <dialog id="photoTools" class="workflow-dialog photo-tools" aria-labelledby="photoToolTitle"><div class="dialog-heading"><h2 id="photoToolTitle">照片</h2><button id="photoToolCancel" class="quiet">取消</button></div><p id="photoToolHint"></p><canvas id="photoToolCanvas" aria-label="照片对齐或两点标定画布"></canvas><div id="photoAlignControls" class="photo-tool-row"><label for="photoScale">缩放 <output id="photoScaleOut">100%</output></label><input type="range" id="photoScale" min="20" max="400" step="1" value="100"><button id="photoAlignReset" class="quiet">居中</button></div><div id="photoMeasureControls" class="photo-tool-row"><label for="realMetres">实测距离 / 米</label><input type="number" inputmode="decimal" id="realMetres" min=".01" max="40" step="any" placeholder="例如 1.20"><button id="photoUndoPoint" class="quiet">撤一点</button></div><p id="photoToolStatus" role="status"></p><div class="choice-list"><button id="photoToolApply" class="button primary"></button><button id="photoAsNew" class="button subtle">用照片另建线路</button></div></dialog>
-<script type="module" src="app.js?v=1.3.0-rc.2"></script></body></html>
+<script type="module" src="app.js?v=1.3.0-rc.3"></script></body></html>
